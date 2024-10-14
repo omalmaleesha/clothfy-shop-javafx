@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="764.0" style="-fx-background-color: #050A24;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmpViewProductController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5e8c7" height="474.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="160.0" />
+      <ImageView fitHeight="74.0" fitWidth="91.0" layoutX="5.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/productLogo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="91.0" layoutY="33.0" text="Presents" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="9.0" layoutY="178.0" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Products" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="9.0" layoutY="227.0" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="8.0" layoutY="277.0" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Return" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="8.0" layoutY="327.0" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="View Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="56.0" layoutY="526.0" text="Log Out">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="20.0" fitWidth="59.0" layoutX="21.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Logout.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="658.0" layoutY="530.0" onAction="#btnOnActionAddProduct" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #73EC8B;" text="Add" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="558.0" layoutY="530.0" onAction="#btnOnActionUpdateProduct" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #7CF5FF;" text="Update">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="458.0" layoutY="530.0" onAction="#btnOnActionDeleteProduct" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #B8001F;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <ScrollPane fx:id="paneForProducts" layoutX="171.0" layoutY="90.0" prefHeight="433.0" prefWidth="586.0">
+         <content>
+            <GridPane fx:id="mainGridPane" hgap="10.0" prefHeight="420.0" prefWidth="571.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <JFXButton layoutX="223.0" layoutY="26.0" onAction="#btnOnActionGents" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #FF6600;" text="Gents" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="377.0" layoutY="26.0" onAction="#btnOnActionKids" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #FF6600;" text="kids" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="530.0" layoutY="26.0" onAction="#btnOnActionLadies" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #FF6600;" text="Ladies" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="47.0" fitWidth="55.0" layoutX="9.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/MaleUser.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="59.0" layoutY="114.0" text="UserId">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="114.0" text="0000">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="129.0" text="Gerald OF Rivia">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Pane fx:id="paneForVboxes" layoutX="165.0" layoutY="80.0" managed="false" prefHeight="474.0" prefWidth="586.0" visible="false" >
+         <children>
+            <VBox fx:id="vboxForaddProduct" layoutX="7.0" layoutY="4.0" managed="false" prefHeight="465.0" prefWidth="573.0" style="-fx-background-color: #050A24; -fx-border-color: White; -fx-border-width: 4;" visible="false">
+               <children>
+                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="566.0" text="Add Product" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="160.0" text="ProductID" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtProductID">
+                     <VBox.margin>
+                        <Insets left="45.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="60.0" prefHeight="21.0" prefWidth="138.0" text="Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtname" layoutX="14.0" layoutY="81.0">
+                     <VBox.margin>
+                        <Insets left="45.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="106.0" prefHeight="21.0" prefWidth="158.0" text="UnitPrice" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtUnitPrice" layoutX="14.0" layoutY="127.0">
+                     <VBox.margin>
+                        <Insets left="45.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXComboBox fx:id="comboBoxCategory" prefHeight="32.0" prefWidth="181.0" promptText="Category" style="-fx-background-color: white;" visibleRowCount="3">
+                     <VBox.margin>
+                        <Insets left="45.0" top="4.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="comboBoxSize" layoutX="59.0" layoutY="211.0" prefHeight="32.0" prefWidth="181.0" promptText="Size" style="-fx-background-color: white;" visibleRowCount="3">
+                     <VBox.margin>
+                        <Insets left="45.0" top="4.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="165.0" text="SupplierID" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtSupplierID">
+                     <VBox.margin>
+                        <Insets left="45.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="279.0" prefHeight="21.0" prefWidth="170.0" text="QtyOnHand" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtQtyOnHand" layoutX="14.0" layoutY="300.0">
+                     <VBox.margin>
+                        <Insets left="45.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="325.0" prefHeight="21.0" prefWidth="132.0" text="Image" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXButton fx:id="btnOnAddImg" onAction="#btnOnActionAddImg" prefHeight="25.0" prefWidth="49.0" style="-fx-background-color: white;" text="Add Image">
+                     <VBox.margin>
+                        <Insets left="44.0" top="3.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#btnOnActionAddNewProduct" prefHeight="34.0" prefWidth="72.0" style="-fx-background-color: green;" text="ADD" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="460.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

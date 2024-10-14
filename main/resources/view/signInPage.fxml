@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="464.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInPageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="464.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="489.0">
+         <fill>
+            <RadialGradient centerX="0.511049723756906" centerY="0.049763033175355464" focusAngle="-24.78" focusDistance="1.0" radius="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.08518518507480621" green="0.03703703731298447" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.012731481343507767" green="0.012752802111208439" blue="0.01315789483487606" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Rectangle>
+      <StackPane fx:id="stackPane" layoutX="343.0" layoutY="107.0" prefHeight="235.0" prefWidth="261.0">
+         <children>
+            <VBox fx:id="createAccountComponent" prefHeight="222.0" prefWidth="261.0" spacing="5.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="282.0" text="Create An Account">
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" graphicTextGap="5.0" prefHeight="17.0" prefWidth="62.0" text="Name" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtCreateName" depthTest="DISABLE" labelFloat="true" minWidth="200.0" prefHeight="26.0" prefWidth="238.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="10.0" layoutY="56.0" prefHeight="17.0" prefWidth="62.0" text="Email" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtCreateEmail" depthTest="DISABLE" labelFloat="true" layoutX="10.0" layoutY="78.0" minWidth="200.0" prefHeight="26.0" prefWidth="238.0">
+                     <opaqueInsets>
+                        <Insets top="5.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="10.0" layoutY="109.0" prefHeight="22.0" prefWidth="87.0" text="Password" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtCreatePassword" depthTest="DISABLE" labelFloat="true" layoutX="10.0" layoutY="78.0" minWidth="200.0" prefHeight="26.0" prefWidth="238.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXButton onAction="#btnOnActionCreateAccount" prefHeight="32.0" prefWidth="235.0" style="-fx-background-color: #009dff;" text="Create Account" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="13.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <VBox fx:id="logInComponent" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="282.0" text="Log In">
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" graphicTextGap="5.0" prefHeight="17.0" prefWidth="62.0" text="Email" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txtEmail" depthTest="DISABLE" labelFloat="true" minWidth="200.0" prefHeight="26.0" prefWidth="238.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" graphicTextGap="5.0" prefHeight="22.0" prefWidth="87.0" text="Password" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXPasswordField fx:id="txtPassword" prefHeight="24.0" prefWidth="261.0">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXPasswordField>
+                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="10.0" layoutY="97.0" prefHeight="22.0" prefWidth="77.0" text="Forget ?" textAlignment="CENTER" textFill="#009dff">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXButton fx:id="loginbtn" onAction="#btnOnActionLogIn" prefHeight="32.0" prefWidth="235.0" style="-fx-background-color: #009dff;" text="LogIn" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="3.0" left="13.0" top="2.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="343.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="261.0" />
+      <Text fx:id="lblNowStatus" layoutX="371.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have An Acccount ?">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text fx:id="lblNow" fill="#009dff" layoutX="531.0" layoutY="355.0" onMouseClicked="#handleLabelClick" strokeType="OUTSIDE" strokeWidth="0.0" text="SignIn">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
