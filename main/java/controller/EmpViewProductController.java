@@ -219,5 +219,13 @@ public class EmpViewProductController implements Initializable {
 
     }
 
+    @FXML
+    void btnOnActionProductView(ActionEvent actionEvent) {
 
+    }
+
+    @FXML
+    void btnOnActionPlaceOrder(ActionEvent actionEvent) {
+
+    }
 }
