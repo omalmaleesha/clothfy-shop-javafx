@@ -3,12 +3,14 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dto.Product;
+import dto.Products;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -33,6 +35,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminViewController implements Initializable {
+
+    @FXML
+    public JFXButton addButton;
 
     @FXML
     private JFXButton btnOnAddImg;
@@ -82,7 +87,7 @@ public class AdminViewController implements Initializable {
     }
     private void addProductsToGrid() {
         ProductService service = ServiceFactory.getInstance().getService(ServiceType.PRODUCT);
-        List<Product> products = service.getProducts();
+        List<Products> products = service.getProducts();
 
         mainGridPane.getChildren().clear();
         int columns = 3;
@@ -90,7 +95,7 @@ public class AdminViewController implements Initializable {
 
         if(products != null) {
             for (int i = 0; i < products.size(); i++) {
-                Product product = products.get(i);
+                Products product = products.get(i);
 
                 VBox productBox = new VBox(10);
                 productBox.setStyle("-fx-border-color: black; -fx-border-width: 1;");
@@ -152,7 +157,7 @@ public class AdminViewController implements Initializable {
 
     @FXML
     void btnOnActionAddNewProduct(ActionEvent event) {
-        Product product = new Product();
+        Products product = new Products();
         product.setProductID(txtProductID.getText());
         product.setName(txtname.getText());
         product.setCategory(comboBoxCategory.getValue());
@@ -195,5 +200,45 @@ public class AdminViewController implements Initializable {
 
     }
 
+    @FXML
+    void btnOnActionNavigationEmplyee(ActionEvent actionEvent) {
+        Stage primaryStage = (Stage) addButton.getScene().getWindow();
+        primaryStage.hide();
 
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/adminEmployee.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void btnOnActionNavigationToSuppliers(ActionEvent actionEvent) {
+        Stage primaryStage = (Stage) addButton.getScene().getWindow();
+        primaryStage.hide();
+
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/adminSupplier.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void BtnOnActionNavigationToReports(ActionEvent actionEvent) {
+        Stage primaryStage = (Stage) addButton.getScene().getWindow();
+        primaryStage.hide();
+
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/adminReports.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

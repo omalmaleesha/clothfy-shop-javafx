@@ -5,6 +5,8 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +19,7 @@
 
 <AnchorPane prefHeight="464.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInPageController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="464.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="489.0">
+      <Rectangle fx:id="mainRectangle" arcHeight="5.0" arcWidth="5.0" height="464.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="489.0">
          <fill>
             <RadialGradient centerX="0.511049723756906" centerY="0.049763033175355464" focusAngle="-24.78" focusDistance="1.0" radius="1.0">
                <stops>
@@ -35,7 +37,7 @@
             </RadialGradient>
          </fill>
       </Rectangle>
-      <StackPane fx:id="stackPane" layoutX="343.0" layoutY="107.0" prefHeight="235.0" prefWidth="261.0">
+      <StackPane fx:id="stackPane" layoutX="343.0" layoutY="91.0" prefHeight="235.0" prefWidth="261.0">
          <children>
             <VBox fx:id="createAccountComponent" prefHeight="222.0" prefWidth="261.0" spacing="5.0" style="-fx-background-color: #FFFFFF;">
                <children>
@@ -121,7 +123,7 @@
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="282.0" text="Log In">
                      <font>
-                        <Font name="Arial Bold" size="20.0" />
+                        <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
                   <Label alignment="CENTER" graphicTextGap="5.0" prefHeight="17.0" prefWidth="62.0" text="Email" textAlignment="CENTER">
@@ -165,17 +167,11 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </JFXPasswordField>
-                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="10.0" layoutY="97.0" prefHeight="22.0" prefWidth="77.0" text="Forget ?" textAlignment="CENTER" textFill="#009dff">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets top="3.0" />
-                     </padding>
+                  <JFXButton fx:id="forget" onAction="#btnOnActionForgetPw" prefHeight="25.0" prefWidth="61.0" text="Forget ?">
                      <VBox.margin>
-                        <Insets top="4.0" />
+                        <Insets left="190.0" />
                      </VBox.margin>
-                  </Label>
+                  </JFXButton>
                   <JFXButton fx:id="loginbtn" onAction="#btnOnActionLogIn" prefHeight="32.0" prefWidth="235.0" style="-fx-background-color: #009dff;" text="LogIn" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
@@ -188,16 +184,46 @@
             </VBox>
          </children>
       </StackPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="343.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="261.0" />
-      <Text fx:id="lblNowStatus" layoutX="371.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have An Acccount ?">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="343.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="261.0" />
+      <Text fx:id="lblNowStatus" layoutX="371.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have An Acccount ?">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Text fx:id="lblNow" fill="#009dff" layoutX="531.0" layoutY="355.0" onMouseClicked="#handleLabelClick" strokeType="OUTSIDE" strokeWidth="0.0" text="SignIn">
+      <Text fx:id="lblNow" fill="#009dff" layoutX="531.0" layoutY="341.0" onMouseClicked="#handleLabelClick" strokeType="OUTSIDE" strokeWidth="0.0" text="SignIn">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
+      <Label layoutX="14.0" layoutY="371.0" text="Discover your unique style with " textAlignment="CENTER" textFill="#ffffff6b">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="397.0" text="the latest trends in fashion." textAlignment="CENTER" textFill="#ffffff6b">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="423.0" text="Step into The Fashion Hub " textAlignment="CENTER" textFill="#ffffff6b">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="63.0" fitWidth="62.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/productLogo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="77.0" layoutY="28.0" text="Present" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="608.0" layoutY="443.0" text="\@CopyWrite">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -3,19 +3,22 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import dto.User;
+import dto.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import service.ServiceFactory;
-import service.SuperService;
 import service.custom.UserService;
+import service.custom.impl.UserServiceImpl;
 import util.ServiceType;
 
 import java.io.IOException;
@@ -24,6 +27,9 @@ public class SignInPageController {
 
     @FXML
     public JFXButton loginbtn;
+
+    @FXML
+    public JFXButton forget;
 
     @FXML
     private VBox createAccountComponent;
@@ -59,9 +65,14 @@ public class SignInPageController {
 
     @FXML
     void btnOnActionCreateAccount(ActionEvent event) {
-        UserService userService = ServiceFactory.getInstance().getService(ServiceType.USER);
-        User user = new User(null,txtCreateName.getText(), txtCreateEmail.getText(), txtCreatePassword.getText());
-        boolean isAdded = userService.addUser(user);
+        UserServiceImpl userService = ServiceFactory.getInstance().getService(ServiceType.USER);
+
+        Users users = new Users(null,
+                txtCreateName.getText(),
+                txtCreateEmail.getText(),
+                txtCreatePassword.getText()
+                );
+        boolean isAdded = userService.addUser(users);
         if(isAdded){
             txtCreateName.clear();
             txtCreateEmail.clear();
@@ -70,6 +81,7 @@ public class SignInPageController {
         }
 
     }
+
 
     private void changeToSignUp() {
         lblNowStatus.setText("Don't have Account ?");
@@ -83,24 +95,27 @@ public class SignInPageController {
     @FXML
     void btnOnActionLogIn(ActionEvent event) {
         boolean logged = logIn(txtEmail.getText(), txtPassword.getText());
-        if (logged){
+        if (logged) {
             Stage primaryStage = (Stage) loginbtn.getScene().getWindow();
             primaryStage.hide();
+
             Stage stage = new Stage();
             try {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/empViewProduct.fxml"))));
+                stage.show();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
-            stage.show();
         }
     }
+
 
 
 
     public void handleLabelClick(MouseEvent mouseEvent) {
         handleLabelClick();
     }
+
     public void handleLabelClick() {
         if (lblNow.getText().equals("SignIn")) {
             lblNowStatus.setText("Don't have Account ?");
@@ -119,12 +134,28 @@ public class SignInPageController {
     }
 
 
-    private boolean logIn(String email,String password){
-        UserService userService = ServiceFactory.getInstance().getService(ServiceType.USER);
+    private boolean logIn(String email, String password) {
+        UserServiceImpl userService = ServiceFactory.getInstance().getService(ServiceType.USER);
         boolean conformed = userService.conformUser(email, password);
-        if(conformed){
-            return true;
+        return conformed;
+    }
+
+
+    @FXML
+    void btnOnActionForgetPw(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PasswordReset.fxml"));
+            Parent root = loader.load();
+
+            PasswordResetController passwordResetController = loader.getController();
+            passwordResetController.setEmail(txtEmail.getText());
+
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return false;
+
     }
 }

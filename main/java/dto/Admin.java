@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDetails {
-    private String orderID;
-    private String productID;
-    private Double quantity;
+public class Admin {
+    private Integer UserID;
+    private String name;
+    private String email;
+    private String password;
 }

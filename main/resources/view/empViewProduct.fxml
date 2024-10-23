@@ -60,7 +60,7 @@
             <Image url="@../image/Logout.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="658.0" layoutY="530.0" onAction="#btnOnActionAddProduct" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #73EC8B;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="addbutton" layoutX="658.0" layoutY="530.0" onAction="#btnOnActionAddProduct" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #73EC8B;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -75,7 +75,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <ScrollPane fx:id="paneForProducts" layoutX="171.0" layoutY="90.0" prefHeight="433.0" prefWidth="586.0">
+      <ScrollPane fx:id="paneForProducts" layoutX="171.0" layoutY="89.0" prefHeight="434.0" prefWidth="586.0" style="-fx-background-color: #050A24;">
          <content>
             <GridPane fx:id="mainGridPane" hgap="10.0" prefHeight="420.0" prefWidth="571.0" vgap="10.0">
               <columnConstraints>
@@ -87,6 +87,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="6.0" />
+               </padding>
             </GridPane>
          </content>
       </ScrollPane>

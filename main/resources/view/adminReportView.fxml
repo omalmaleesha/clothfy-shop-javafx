@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="574.0" prefWidth="777.0" style="-fx-background-color: #050A24;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminReportViewController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5e8c7" height="474.0" layoutX="-1.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="160.0" />
+      <ImageView fitHeight="74.0" fitWidth="91.0" layoutX="5.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/productLogo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="90.0" layoutY="36.0" text="Presents" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="9.0" layoutY="188.0" onAction="#btnOnActionProductViewNavigate" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Products" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="9.0" layoutY="237.0" onAction="#btnOnActionNavigateToSuppliers" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Suppliers" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="8.0" layoutY="287.0" onAction="#btnOnActionNavigateToEmployee" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Employee" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="8.0" layoutY="337.0" onAction="#btnOnActionNavigateReports" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #D91656;" text="Reports" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="66.0" layoutY="536.0" text="Log Out">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="20.0" fitWidth="59.0" layoutX="31.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Logout.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="55.0" layoutX="8.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/MaleUser.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="58.0" layoutY="124.0" text="UserId">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="100.0" layoutY="124.0" text="0000">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="139.0" text="Gerald OF Rivia">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="653.0" layoutY="9.0" text="Reports View" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <PieChart fx:id="pieChart" layoutX="167.0" layoutY="62.0" prefHeight="214.0" prefWidth="222.0" />
+      <Label layoutX="219.0" layoutY="36.0" text="Product Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <PieChart fx:id="pieChartfororder" layoutX="424.0" layoutY="61.0" prefHeight="214.0" prefWidth="222.0" />
+      <Label layoutX="501.0" layoutY="35.0" text="Orders" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

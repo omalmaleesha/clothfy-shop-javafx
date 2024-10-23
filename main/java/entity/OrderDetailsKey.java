@@ -1,5 +1,6 @@
-package dto;
+package entity;
 
+import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,8 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDetails {
+@Embeddable
+public class OrderDetailsKey {
     private String orderID;
     private String productID;
-    private Double quantity;
 }

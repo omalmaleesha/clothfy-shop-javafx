@@ -1,6 +1,5 @@
 package dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-    private Integer UserID;
+public class Suppliers {
+    private String supplierID;
     private String name;
+    private String company;
     private String email;
-    private String password;
-
 }

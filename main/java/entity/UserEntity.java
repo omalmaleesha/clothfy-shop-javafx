@@ -13,13 +13,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "UserEntity")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer UserID;
-
-    @Column(name = "name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userID")
+    private Integer userID;
     private String name;
-    @Column(name = "email")
     private String email;
-    @Column(name = "password")
     private String password;
 }

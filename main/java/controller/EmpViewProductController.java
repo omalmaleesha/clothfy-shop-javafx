@@ -3,15 +3,15 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dto.Product;
-import entity.ProductEntity;
+import dto.Products;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -22,7 +22,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import service.ServiceFactory;
-import service.SuperService;
 import service.custom.ProductService;
 import util.ServiceType;
 
@@ -32,11 +31,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.geometry.Pos;
+
 
 public class EmpViewProductController implements Initializable {
+
+
+    @FXML
+    public JFXButton addbutton;
 
     @FXML
     private JFXButton btnOnAddImg;
@@ -87,7 +91,7 @@ public class EmpViewProductController implements Initializable {
 
     private void addProductsToGrid() {
         ProductService service = ServiceFactory.getInstance().getService(ServiceType.PRODUCT);
-        List<Product> products = service.getProducts();
+        List<Products> products = service.getProducts();
 
         mainGridPane.getChildren().clear();
         int columns = 3;
@@ -95,10 +99,21 @@ public class EmpViewProductController implements Initializable {
 
         if(products != null) {
             for (int i = 0; i < products.size(); i++) {
-                Product product = products.get(i);
+                Products product = products.get(i);
 
                 VBox productBox = new VBox(10);
-                productBox.setStyle("-fx-border-color: black; -fx-border-width: 1;");
+                productBox.setStyle(
+                        "-fx-border-color: black;" +
+                                "-fx-border-width: 1;" +
+                                "-fx-background-color: #f0f0f0;" +
+                                "-fx-border-radius: 10;" +
+                                "-fx-background-radius: 10;" +
+                                "-fx-padding: 1;" +
+                                "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.5, 0, 0);"
+                );
+
+
+                productBox.setAlignment(Pos.CENTER);
 
                 byte[] imageData = product.getImage();
 
@@ -108,12 +123,15 @@ public class EmpViewProductController implements Initializable {
                 ImageView imageView = new ImageView();
                 imageView.setImage(image);
 
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(100);
+
+                imageView.setFitWidth(150);
+                imageView.setFitHeight(120);
 
                 Label productName = new Label(product.getName());
+                productName.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
                 Label unitPrice = new Label("$" + product.getUnitPrice());
+                unitPrice.setStyle("-fx-font-size: 12px; -fx-text-fill: #888888;");
 
                 productBox.getChildren().addAll(imageView, productName, unitPrice);
 
@@ -121,6 +139,8 @@ public class EmpViewProductController implements Initializable {
                 row = i / columns;
 
                 mainGridPane.add(productBox, column, row);
+
+
             }
 
             mainGridPane.setVgap(10);
@@ -191,7 +211,7 @@ public class EmpViewProductController implements Initializable {
     }
 
     public void btnOnActionAddNewProduct(ActionEvent actionEvent) {
-        Product product = new Product();
+        Products product = new Products();
         product.setProductID(txtProductID.getText());
         product.setName(txtname.getText());
         product.setCategory(comboBoxCategory.getValue());
@@ -210,9 +230,11 @@ public class EmpViewProductController implements Initializable {
             paneForVboxes.setManaged(false);
             vboxForaddProduct.setVisible(false);
             vboxForaddProduct.setManaged(false);
+            addProductsToGrid();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR, "NOT DONE !");
             alert.show();
+
         }
 
 
@@ -226,6 +248,14 @@ public class EmpViewProductController implements Initializable {
 
     @FXML
     void btnOnActionPlaceOrder(ActionEvent actionEvent) {
-
+        Stage primaryStage = (Stage) addbutton.getScene().getWindow();
+        primaryStage.hide();
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/empOrder.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
 }

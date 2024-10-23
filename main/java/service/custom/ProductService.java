@@ -1,13 +1,20 @@
 package service.custom;
 
-import dto.Product;
-import entity.ProductEntity;
+import dto.Products;
+import javafx.collections.ObservableList;
 import service.SuperService;
 
 import java.util.List;
 
 public interface ProductService extends SuperService {
-    boolean addProduct(Product product);
+    boolean addProduct(Products product);
 
-    List<Product> getProducts();
+    List<Products> getProducts();
+    ObservableList<String> getIds();
+
+    Products findProductById(String newValue);
+
+    List<Object[]> getProductCategoryData();
+
+    Products getProduct(String productID);
 }

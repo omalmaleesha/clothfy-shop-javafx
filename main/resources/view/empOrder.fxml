@@ -8,9 +8,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="574.0" prefWidth="715.0" style="-fx-background-color: #050A24;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmpOrderManagement">
    <children>
@@ -55,7 +57,7 @@
             <Image url="@../image/Logout.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="611.0" layoutY="535.0" onAction="#btnOnActionPlaceOrder" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #73EC8B;" text="PlaceOrder" textFill="WHITE">
+      <JFXButton fx:id="placeorder" layoutX="611.0" layoutY="535.0" onAction="#btnOnActionPlaceOrder" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #73EC8B;" text="PlaceOrder" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -81,9 +83,17 @@
          </font>
       </Label>
       <ScrollPane fx:id="scrollPaneForCartProducts" layoutX="173.0" layoutY="323.0" prefHeight="200.0" prefWidth="534.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
+         <content>
+            <GridPane fx:id="gridPaneInsideScrollPane" hgap="10.0" prefHeight="187.0" prefWidth="520.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
       </ScrollPane>
       <Label layoutX="173.0" layoutY="14.0" text="Date -" textFill="WHITE">
          <font>
@@ -121,14 +131,9 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderID" layoutX="239.0" layoutY="62.0" text="OR456" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <JFXComboBox fx:id="comboBoxEmployeeID" layoutX="292.0" layoutY="60.0" prefHeight="25.0" prefWidth="94.0" promptText="EmployeeID" style="-fx-background-color: white;" />
-      <JFXComboBox fx:id="comboBoxPaymentType" layoutX="469.0" layoutY="60.0" prefHeight="25.0" prefWidth="64.0" promptText="Method" style="-fx-background-color: white;" />
-      <Label layoutX="397.0" layoutY="62.0" text="Payment -" textFill="WHITE">
+      <JFXComboBox fx:id="comboBoxEmployeeID" layoutX="303.0" layoutY="60.0" prefHeight="25.0" prefWidth="94.0" promptText="EmployeeID" style="-fx-background-color: white;" />
+      <JFXComboBox fx:id="comboBoxPaymentType" layoutX="480.0" layoutY="60.0" prefHeight="25.0" prefWidth="64.0" promptText="Method" style="-fx-background-color: white;" />
+      <Label layoutX="408.0" layoutY="62.0" text="Payment -" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -190,5 +195,6 @@
          </font>
       </Label>
       <JFXTextField fx:id="txtUnitPrice" layoutX="269.0" layoutY="187.0" prefHeight="25.0" prefWidth="87.0" />
+      <JFXTextField fx:id="lblOrderID" layoutX="241.0" layoutY="60.0" prefHeight="25.0" prefWidth="56.0" />
    </children>
 </AnchorPane>

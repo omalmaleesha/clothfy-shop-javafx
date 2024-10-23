@@ -7,14 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class OrderCart {
     private String productID;
     private String name;
-    private String category;
-    private String size;
-    private Double qtyOnHand;
-    private String supplierID;
     private Double unitPrice;
-    private byte[] image;
+    private Double qty;
+    private Double total;
+    private Double discount;
+
 
 }
