@@ -4,6 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.Products;
+import entity.SupplierEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import service.ServiceFactory;
+import service.SuperService;
 import service.custom.ProductService;
 import util.ServiceType;
 
@@ -41,6 +47,36 @@ public class EmpViewProductController implements Initializable {
 
     @FXML
     public JFXButton addbutton;
+
+    @FXML
+    public JFXTextField txtSearchByIdOrName;
+
+    @FXML
+    public JFXTextField txtNwProductId;
+
+    @FXML
+    public JFXTextField txtNwProductName;
+
+    @FXML
+    public JFXTextField txtNwProductSupplierID;
+
+    @FXML
+    public JFXTextField txtNwProductUnitprice;
+
+    @FXML
+    public VBox vboxForUpdateAndDelete;
+
+    @FXML
+    public JFXTextField txtNwProductQtyOnHand;
+
+    @FXML
+    public JFXButton addImg;
+
+    @FXML
+    public JFXComboBox cmdBoxCategoryInUpdate;
+
+    @FXML
+    public JFXComboBox cmdBoxSizeInUpdate;
 
     @FXML
     private JFXButton btnOnAddImg;
@@ -79,13 +115,16 @@ public class EmpViewProductController implements Initializable {
     private VBox vboxForaddProduct;
 
     private byte[] imageBytes;
+    private byte[] imageBytesNw;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> strings = FXCollections.observableArrayList("kids","ladies","gents");
         comboBoxCategory.setItems(strings);
+        cmdBoxCategoryInUpdate.setItems(strings);
         ObservableList<String> size = FXCollections.observableArrayList("s","m","l");
         comboBoxSize.setItems(size);
+        cmdBoxSizeInUpdate.setItems(size);
         addProductsToGrid();
     }
 
@@ -187,7 +226,10 @@ public class EmpViewProductController implements Initializable {
 
     @FXML
     void btnOnActionDeleteProduct(ActionEvent event) {
-
+        paneForVboxes.setVisible(true);
+        paneForVboxes.setManaged(true);
+        vboxForUpdateAndDelete.setVisible(true);
+        vboxForUpdateAndDelete.setManaged(true);
     }
 
     @FXML
@@ -207,7 +249,10 @@ public class EmpViewProductController implements Initializable {
 
     @FXML
     void btnOnActionUpdateProduct(ActionEvent event) {
-
+        paneForVboxes.setVisible(true);
+        paneForVboxes.setManaged(true);
+        vboxForUpdateAndDelete.setVisible(true);
+        vboxForUpdateAndDelete.setManaged(true);
     }
 
     public void btnOnActionAddNewProduct(ActionEvent actionEvent) {
@@ -257,5 +302,90 @@ public class EmpViewProductController implements Initializable {
             throw new RuntimeException(e);
         }
         stage.show();
+    }
+
+    @FXML
+    void btnOnActionCancelUpdateWindow(ActionEvent actionEvent) {
+        paneForVboxes.setVisible(true);
+        paneForVboxes.setManaged(true);
+        vboxForUpdateAndDelete.setVisible(true);
+        vboxForUpdateAndDelete.setManaged(true);
+    }
+
+
+    @FXML
+    void btnONActiondeleteProduct(ActionEvent actionEvent) {
+        ProductService service = ServiceFactory.getInstance().getService(ServiceType.PRODUCT);
+        Boolean isDeleted = service.deleteProduct(txtNwProductId.getText());
+        if(isDeleted){
+            new Alert(Alert.AlertType.INFORMATION,"Done").show();
+        }else{
+            new Alert(Alert.AlertType.WARNING,"Not Deleted").show();
+        }
+    }
+
+
+    @FXML
+    void btnONActionNwUpdateProduct(ActionEvent actionEvent) {
+        Products products = new Products();
+        products.setProductID(txtNwProductId.getText());
+        products.setName(txtNwProductName.getText());
+        products.setCategory((String) cmdBoxCategoryInUpdate.getValue());
+        products.setSize((String) cmdBoxSizeInUpdate.getValue());
+        products.setQtyOnHand(Double.parseDouble(txtNwProductQtyOnHand.getText()));
+        products.setSupplierID(txtNwProductSupplierID.getText());
+        products.setUnitPrice(Double.parseDouble(txtNwProductUnitprice.getText()));
+        products.setImage(imageBytesNw);
+
+        ProductService service = ServiceFactory.getInstance().getService(ServiceType.PRODUCT);
+        boolean updateProduct = service.updateProduct(products);
+        if (updateProduct){
+            new Alert(Alert.AlertType.INFORMATION,"Done").show();
+        }else{
+            new Alert(Alert.AlertType.WARNING,"Not Done").show();
+        }
+
+
+    }
+
+
+    @FXML
+    void btnOnActionNwAddImage(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Image File");
+
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        Stage stage = (Stage) addImg.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+
+        if (file != null) {
+            addImg.setText("Selected Img");
+            try {
+                imageBytesNw = Files.readAllBytes(file.toPath());
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @FXML
+    void btnOnActionSearchProduct(ActionEvent actionEvent) {
+        ProductService service = ServiceFactory.getInstance().getService(ServiceType.PRODUCT);
+        Products product = service.findProductByIdOrName(txtSearchByIdOrName.getText());
+        if (product != null) {
+            txtNwProductId.setText(product.getProductID());
+            txtNwProductName.setText(product.getName());
+            cmdBoxCategoryInUpdate.setValue(product.getCategory());
+            cmdBoxSizeInUpdate.setValue(product.getSize());
+            txtNwProductUnitprice.setText(String.valueOf(product.getUnitPrice()));
+            txtNwProductQtyOnHand.setText(String.valueOf(product.getQtyOnHand()));
+            txtNwProductSupplierID.setText(product.getSupplierID());
+            imageBytesNw = product.getImage();
+        }
+
     }
 }

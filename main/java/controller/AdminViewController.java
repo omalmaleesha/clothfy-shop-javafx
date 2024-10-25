@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -98,7 +99,18 @@ public class AdminViewController implements Initializable {
                 Products product = products.get(i);
 
                 VBox productBox = new VBox(10);
-                productBox.setStyle("-fx-border-color: black; -fx-border-width: 1;");
+                productBox.setStyle(
+                        "-fx-border-color: black;" +
+                                "-fx-border-width: 1;" +
+                                "-fx-background-color: #f0f0f0;" +
+                                "-fx-border-radius: 10;" +
+                                "-fx-background-radius: 10;" +
+                                "-fx-padding: 1;" +
+                                "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.5, 0, 0);"
+                );
+
+
+                productBox.setAlignment(Pos.CENTER);
 
                 byte[] imageData = product.getImage();
 
@@ -108,12 +120,15 @@ public class AdminViewController implements Initializable {
                 ImageView imageView = new ImageView();
                 imageView.setImage(image);
 
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(100);
+
+                imageView.setFitWidth(150);
+                imageView.setFitHeight(120);
 
                 Label productName = new Label(product.getName());
+                productName.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
                 Label unitPrice = new Label("$" + product.getUnitPrice());
+                unitPrice.setStyle("-fx-font-size: 12px; -fx-text-fill: #888888;");
 
                 productBox.getChildren().addAll(imageView, productName, unitPrice);
 
@@ -121,6 +136,8 @@ public class AdminViewController implements Initializable {
                 row = i / columns;
 
                 mainGridPane.add(productBox, column, row);
+
+
             }
 
             mainGridPane.setVgap(10);
@@ -131,6 +148,7 @@ public class AdminViewController implements Initializable {
             System.out.println("null");
         }
     }
+
 
     @FXML
     void btnOnActionAddImg(ActionEvent event) {
@@ -240,5 +258,9 @@ public class AdminViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void btnOnActionProductWindow(ActionEvent actionEvent) {
+
     }
 }

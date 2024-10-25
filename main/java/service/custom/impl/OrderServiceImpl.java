@@ -20,10 +20,10 @@ import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
     @Override
-    public void placeOrder(Orders orders) {
+    public void placeOrder(Orders orders,int userid) {
         OrderEntity map = new ModelMapper().map(orders, OrderEntity.class);
         OrderRepositoryDaoImpl dao = DaoFactory.getInstance().getDao(DaoType.ORDER);
-        boolean save = dao.save(map);
+        boolean save = dao.saveOrders(map,userid);
         if(save){
             addOrderDetails(orders);
         }

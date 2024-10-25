@@ -16,7 +16,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="573.0" prefWidth="741.0" style="-fx-background-color: #050A24;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminSupplierManager">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5e8c7" height="474.0" layoutX="-2.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="160.0" />
@@ -30,22 +29,22 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <JFXButton layoutX="8.0" layoutY="188.0" onAction="#btnOnActionProductView" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #D91656;" text="Products" textFill="WHITE">
+      <JFXButton layoutX="8.0" layoutY="188.0" onAction="#btnOnActionProductView" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Products" textFill="WHITE">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="8.0" layoutY="237.0" onAction="#btnOnActionPlaceOrder" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Order" textFill="WHITE">
+      <JFXButton layoutX="8.0" layoutY="237.0" onAction="#btnOnActionEmployeeView" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Employee" textFill="WHITE">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="7.0" layoutY="287.0" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Return" textFill="WHITE">
+      <JFXButton layoutX="7.0" layoutY="287.0" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #D91656;" text="Suppliers" textFill="WHITE">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="7.0" layoutY="337.0" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="View Order" textFill="WHITE">
+      <JFXButton layoutX="7.0" layoutY="337.0" onAction="#btnOnActionReportsView" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #87A2FF;" text="Reports" textFill="WHITE">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -99,12 +98,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXButton layoutX="519.0" layoutY="540.0" onAction="#btnOnActionAddSupplier" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #73EC8B;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="addbtn" layoutX="519.0" layoutY="540.0" onAction="#btnOnActionAddSupplier" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #73EC8B;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <Pane fx:id="paneForAddUpdate" layoutX="59.0" layoutY="34.0" prefHeight="523.0" prefWidth="645.0">
+      <Pane fx:id="paneForAddUpdate" layoutX="59.0" layoutY="34.0" prefHeight="523.0" prefWidth="645.0" visible="false">
          <children>
             <VBox fx:id="vBoxForAddSupplier" prefHeight="523.0" prefWidth="645.0" style="-fx-background-color: #050A24; -fx-border-color: white; -fx-border-width: 5;" visible="false">
                <children>
@@ -182,7 +181,7 @@
                               <Insets left="100.0" />
                            </GridPane.margin>
                         </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="24.0" onAction="#btnOnCancelSupplier" prefHeight="42.0" prefWidth="91.0" style="-fx-background-color: red;" text="Cancel" textFill="WHITE" GridPane.columnIndex="1">
+                        <JFXButton layoutX="10.0" layoutY="24.0" onAction="#btnOnCancelAddSupplier" prefHeight="42.0" prefWidth="91.0" style="-fx-background-color: red;" text="Cancel" textFill="WHITE" GridPane.columnIndex="1">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -197,7 +196,7 @@
                   </GridPane>
                </children>
             </VBox>
-            <VBox fx:id="vboxForUpdateSupplier" layoutX="-2.0" layoutY="1.0" prefHeight="523.0" prefWidth="645.0" style="-fx-background-color: #050A24; -fx-border-color: white; -fx-border-width: 5;">
+            <VBox fx:id="vboxForUpdateSupplier" layoutX="-2.0" layoutY="1.0" prefHeight="523.0" prefWidth="645.0" style="-fx-background-color: #050A24; -fx-border-color: white; -fx-border-width: 5;" visible="false">
                <children>
                   <Label alignment="CENTER" prefHeight="46.0" prefWidth="636.0" text="Update Supplier" textFill="WHITE">
                      <font>

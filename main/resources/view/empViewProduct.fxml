@@ -128,7 +128,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Pane fx:id="paneForVboxes" layoutX="165.0" layoutY="80.0" managed="false" prefHeight="474.0" prefWidth="586.0" visible="false">
+      <Pane fx:id="paneForVboxes" layoutX="165.0" layoutY="80.0" managed="false" prefHeight="0.0" prefWidth="0.0" visible="false">
          <children>
             <VBox fx:id="vboxForaddProduct" layoutX="7.0" layoutY="4.0" managed="false" prefHeight="465.0" prefWidth="573.0" style="-fx-background-color: #050A24; -fx-border-color: White; -fx-border-width: 4;" visible="false">
                <children>
@@ -236,6 +236,198 @@
                         <Insets bottom="2.0" left="460.0" top="20.0" />
                      </VBox.margin>
                   </JFXButton>
+               </children>
+            </VBox>
+            <VBox fx:id="vboxForUpdateAndDelete" layoutX="11.0" prefHeight="461.0" prefWidth="563.0" style="-fx-background-color: #050A24; -fx-border-color: white; -fx-border-width: 5;" visible="false">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="554.0" text="Product Update/Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="search" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="120.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXTextField fx:id="txtSearchByIdOrName" promptText="searchByIdOrName" unFocusColor="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton onAction="#btnOnActionSearchProduct" style="-fx-background-color: blue;" text="Search" textFill="WHITE" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
+                  <GridPane prefHeight="280.0" prefWidth="553.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                     <children>
+                        <JFXTextField fx:id="txtNwProductId" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtNwProductName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtNwProductSupplierID" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtNwProductUnitprice" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                        </JFXTextField>
+                        <Label text="ProductId" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="12.0" text="Category" textFill="WHITE" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="45.0" text="Productname" textFill="WHITE" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="45.0" text="size" textFill="WHITE" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="111.0" text="QtyOnHand" textFill="WHITE" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="144.0" text="SupplierId" textFill="WHITE" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="177.0" text="unitPrice" textFill="WHITE" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="223.0" text="Image" textFill="WHITE" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <JFXComboBox fx:id="cmdBoxCategoryInUpdate" prefHeight="25.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXComboBox fx:id="cmdBoxSizeInUpdate" layoutX="287.0" layoutY="85.0" prefHeight="25.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <JFXTextField fx:id="txtNwProductQtyOnHand" layoutX="287.0" layoutY="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets right="80.0" />
+                           </GridPane.margin>
+                        </JFXTextField>
+                        <JFXButton fx:id="addImg" onAction="#btnOnActionNwAddImage" prefHeight="25.0" prefWidth="195.0" style="-fx-background-color: white;" text="Add Image" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <JFXButton onAction="#btnONActionNwUpdateProduct" style="-fx-background-color: blue;" text="Update" textFill="WHITE">
+                           <GridPane.margin>
+                              <Insets left="120.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="13.0" onAction="#btnONActiondeleteProduct" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="195.0" layoutY="13.0" onAction="#btnOnActionCancelUpdateWindow" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: orange;" text="Cancel" textFill="WHITE" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
                </children>
             </VBox>
          </children>

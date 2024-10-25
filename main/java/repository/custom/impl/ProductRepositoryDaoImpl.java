@@ -138,5 +138,83 @@ public class ProductRepositoryDaoImpl implements ProductRepositoryDao {
         return isUpdated;
     }
 
+    @Override
+    public List<Object[]> getProductQuantitiesBySupplier() {
+        try (Session session = HibernateUtil.getSession()) {
+            String hql = "SELECT s.supplierID, SUM(p.qtyOnHand) " +
+                    "FROM ProductEntity p " +
+                    "JOIN p.supplier s " +
+                    "GROUP BY s.supplierID";
+            Query query = session.createQuery(hql);
+            return query.getResultList();
+        }
+    }
 
+    @Override
+    public ProductEntity findByIdOrName(String text) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        ProductEntity product = null;
+
+        try {
+            String hql = "FROM ProductEntity WHERE productID = :text OR name = :text";
+            Query<ProductEntity> query = session.createQuery(hql, ProductEntity.class);
+            query.setParameter("text", text);
+            product = query.uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return product;
+    }
+
+    @Override
+    public boolean updateProduct(ProductEntity productEntity) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        boolean isUpdated = false;
+
+        try {
+            session.merge(productEntity);
+            transaction.commit();
+            isUpdated = true;
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return isUpdated;
+    }
+
+    @Override
+    public Boolean deleteProduct(String productId) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        boolean isDeleted = false;
+
+        try {
+            String deleteOrderDetailsHQL = "DELETE FROM OrderDetailsEntity WHERE product.productID = :productId";
+            Query<?> deleteOrderDetailsQuery = session.createQuery(deleteOrderDetailsHQL);
+            deleteOrderDetailsQuery.setParameter("productId", productId);
+            deleteOrderDetailsQuery.executeUpdate();
+            ProductEntity product = session.get(ProductEntity.class, productId);
+            if (product != null) {
+                session.delete(product);
+                transaction.commit();
+                isDeleted = true;
+            } else {
+                transaction.rollback();
+            }
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return isDeleted;
+    }
 }

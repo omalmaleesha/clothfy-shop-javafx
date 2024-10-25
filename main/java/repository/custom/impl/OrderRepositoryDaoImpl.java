@@ -2,6 +2,7 @@ package repository.custom.impl;
 
 import entity.OrderDetailsEntity;
 import entity.OrderEntity;
+import entity.UserEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
@@ -14,15 +15,22 @@ import java.util.List;
 
 public class OrderRepositoryDaoImpl implements OrderRepository {
     @Override
-    public boolean save(OrderEntity orderEntity) {
+    public boolean saveOrders(OrderEntity orderEntity,int userId) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
+        UserEntity user = session.get(UserEntity.class, userId);
+        orderEntity.setUser(user);
         session.merge(orderEntity);
         session.getTransaction().commit();
         session.clear();
         return true;
     }
 
+
+    @Override
+    public boolean save(OrderEntity orderEntity) {
+        return false;
+    }
 
     @Override
     public ObservableList<Integer> getIds() {

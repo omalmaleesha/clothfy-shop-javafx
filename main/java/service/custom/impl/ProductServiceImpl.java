@@ -61,4 +61,29 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
+    @Override
+    public List<Object[]> getProductQuantitiesBySupplier() {
+        ProductRepositoryDaoImpl dao = DaoFactory.getInstance().getDao(DaoType.PRODUCT);
+        return dao.getProductQuantitiesBySupplier();
+    }
+
+    @Override
+    public Products findProductByIdOrName(String text) {
+        ProductRepositoryDaoImpl dao = DaoFactory.getInstance().getDao(DaoType.PRODUCT);
+        return new ModelMapper().map(dao.findByIdOrName(text),Products.class);
+    }
+
+    @Override
+    public boolean updateProduct(Products products) {
+        ProductRepositoryDaoImpl dao = DaoFactory.getInstance().getDao(DaoType.PRODUCT);
+        ProductEntity productEntity = new ModelMapper().map(products, ProductEntity.class);
+        return dao.updateProduct(productEntity);
+    }
+
+    @Override
+    public Boolean deleteProduct(String text) {
+        ProductRepositoryDaoImpl dao = DaoFactory.getInstance().getDao(DaoType.PRODUCT);
+        return dao.deleteProduct(text);
+    }
+
 }

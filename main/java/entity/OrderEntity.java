@@ -19,8 +19,9 @@ public class OrderEntity {
     @Id
     private String orderID;
 
+
     @ManyToOne
-    @JoinColumn(name = "UserID", referencedColumnName = "UserID")
+    @JoinColumn(name = "UserID", referencedColumnName = "userID")
     private UserEntity user;
 
     private String paymentType;

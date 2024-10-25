@@ -17,4 +17,13 @@ public interface ProductService extends SuperService {
     List<Object[]> getProductCategoryData();
 
     Products getProduct(String productID);
+
+    List<Object[]> getProductQuantitiesBySupplier();
+
+    Products findProductByIdOrName(String text);
+
+    boolean updateProduct(Products products);
+
+    Boolean deleteProduct(String text);
+
 }

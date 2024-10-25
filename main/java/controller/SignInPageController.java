@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import dto.Users;
@@ -17,6 +18,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import service.ServiceFactory;
+import service.SuperService;
+import service.custom.AdminService;
 import service.custom.UserService;
 import service.custom.impl.UserServiceImpl;
 import util.ServiceType;
@@ -30,6 +33,9 @@ public class SignInPageController {
 
     @FXML
     public JFXButton forget;
+
+    @FXML
+    public JFXCheckBox checkbox;
 
     @FXML
     private VBox createAccountComponent;
@@ -82,7 +88,6 @@ public class SignInPageController {
 
     }
 
-
     private void changeToSignUp() {
         lblNowStatus.setText("Don't have Account ?");
         lblNow.setText("SignUp");
@@ -95,7 +100,19 @@ public class SignInPageController {
     @FXML
     void btnOnActionLogIn(ActionEvent event) {
         boolean logged = logIn(txtEmail.getText(), txtPassword.getText());
-        if (logged) {
+        if (checkbox.isSelected() && logged) {
+            Stage primaryStage = (Stage) loginbtn.getScene().getWindow();
+            primaryStage.hide();
+
+            Stage stage = new Stage();
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/adminView.fxml"))));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!checkbox.isSelected() && logged) {
             Stage primaryStage = (Stage) loginbtn.getScene().getWindow();
             primaryStage.hide();
 
@@ -135,9 +152,13 @@ public class SignInPageController {
 
 
     private boolean logIn(String email, String password) {
-        UserServiceImpl userService = ServiceFactory.getInstance().getService(ServiceType.USER);
-        boolean conformed = userService.conformUser(email, password);
-        return conformed;
+        if(checkbox.isSelected()){
+            AdminService service = ServiceFactory.getInstance().getService(ServiceType.ADMIN);
+            return service.conformAdmin(email, password);
+        }else{
+            UserServiceImpl userService = ServiceFactory.getInstance().getService(ServiceType.USER);
+            return userService.conformUser(email, password);
+        }
     }
 
 

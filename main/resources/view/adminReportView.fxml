@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -83,8 +86,21 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <PieChart fx:id="pieChartfororder" layoutX="424.0" layoutY="61.0" prefHeight="214.0" prefWidth="222.0" />
-      <Label layoutX="501.0" layoutY="35.0" text="Orders" textFill="WHITE">
+      <PieChart fx:id="pieChartfororder" layoutX="479.0" layoutY="61.0" prefHeight="214.0" prefWidth="222.0" />
+      <Label layoutX="556.0" layoutY="35.0" text="Orders" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <BarChart fx:id="barchartForSupplierProducts" layoutX="226.0" layoutY="296.0" prefHeight="236.0" prefWidth="407.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Label layoutX="367.0" layoutY="535.0" text="Suppliers Product" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

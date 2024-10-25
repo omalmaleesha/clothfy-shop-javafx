@@ -200,9 +200,10 @@ public class EmpOrderManagement implements Initializable {
                 LocalDate.now(),
                 orderDetailsList
         );
+        Integer value = comboBoxEmployeeID.getValue();
         String text = lblOrderID.getText();
         OrderService service = ServiceFactory.getInstance().getService(ServiceType.ORDER);
-        service.placeOrder(orders);
+        service.placeOrder(orders,value);
 
         Stage primaryStage = (Stage) placeorder.getScene().getWindow();
         primaryStage.hide();
@@ -225,7 +226,15 @@ public class EmpOrderManagement implements Initializable {
 
     @FXML
     void btnOnActionProductsView(ActionEvent event) {
-
+        Stage primaryStage = (Stage) placeorder.getScene().getWindow();
+        primaryStage.hide();
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/empViewProduct.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
 
     @Override
